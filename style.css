@@ -1,0 +1,20 @@
+.container-1 {
+  border: 1px solid black;
+  margin: 0% 10%;
+}
+
+.container-1 h2 {
+  text-align: center;
+}
+
+.container-flexbox-1 {
+  border: 1px solid black;
+  display: flex;
+  padding: 10px;
+  justify-content: space-around;
+}
+
+.container-flexbox-1 div {
+  padding: 10px;
+  border: 1px solid black;
+}
