@@ -30,3 +30,81 @@ const generateCat = () => {
 };
 
 document.getElementById("generate-cat").addEventListener("click", generateCat);
+
+//Challenge 3: Rock Paper Scissors
+let rockImg = document.getElementById("rock");
+rockImg.addEventListener("click", () => {
+  rpsGame(rockImg);
+});
+let paperImg = document.getElementById("paper");
+paperImg.addEventListener("click", () => {
+  rpsGame(paperImg);
+});
+let scissorsImg = document.getElementById("scissors");
+scissorsImg.addEventListener("click", () => {
+  rpsGame(scissorsImg);
+});
+
+const rpsRandom = () => {
+  let choices = ["rock", "paper", "scissors"];
+  let botChoice = choices[Math.floor(Math.random() * choices.length)];
+  return botChoice;
+};
+
+const winnerComputer = (userChoice, botChoice) => {
+  let rpsRules = {
+    rock: { scissors: 1, rock: 0.5, paper: 0 },
+    paper: { rock: 1, paper: 0.5, scissors: 0 },
+    scissors: { paper: 1, scissors: 0.5, rock: 0 },
+  };
+
+  let userScore = rpsRules[userChoice][botChoice];
+  if (userScore == 1) {
+    return "You win";
+  } else if (userScore == 0.5) {
+    return "Draw";
+  } else {
+    return "You lose";
+  }
+};
+
+const frontEndChanges = (userChoice, botChoice, resultMessage) => {
+  let imgSources = {
+    rock: document.getElementById("rock").src,
+    paper: document.getElementById("paper").src,
+    scissors: document.getElementById("scissors").src,
+  };
+
+  document.getElementById("rock").remove();
+  document.getElementById("paper").remove();
+  document.getElementById("scissors").remove();
+
+  let userChoiceImg = document.createElement("img");
+  userChoiceImg.src = imgSources[userChoice];
+  userChoiceImg.setAttribute("width", "20%");
+  userChoiceImg.setAttribute("height", "250px");
+  userChoiceImg.setAttribute("margin", "10px 0px");
+  userChoiceImg.setAttribute("border", "2px solid black");
+  let botChoiceImg = document.createElement("img");
+  botChoiceImg.src = imgSources[botChoice];
+  botChoiceImg.setAttribute("width", "20%");
+  botChoiceImg.setAttribute("height", "250px");
+  botChoiceImg.setAttribute("margin", "10px 0px");
+  botChoiceImg.setAttribute("border", "2px solid black");
+
+  let resultMessageSpan = document.createElement("div");
+  resultMessageSpan.innerHTML = resultMessage;
+  resultMessageSpan.style.border = "2px solid black";
+
+  document.getElementById("rps-flexbox").appendChild(userChoiceImg);
+  document.getElementById("rps-flexbox").appendChild(resultMessageSpan);
+  document.getElementById("rps-flexbox").appendChild(botChoiceImg);
+};
+
+const rpsGame = (userClick) => {
+  console.log(userClick);
+  let userChoice = userClick.id;
+  let botChoice = rpsRandom();
+  let resultMessage = winnerComputer(userChoice, botChoice);
+  frontEndChanges(userChoice, botChoice, resultMessage);
+};

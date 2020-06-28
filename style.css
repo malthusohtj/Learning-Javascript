@@ -1,11 +1,9 @@
-.container-1,
-.container-2 {
+.header-container {
   border: 1px solid black;
   margin: 0% 10%;
 }
 
-.container-1 h2,
-.container-2 h2 {
+.header-container h2 {
   text-align: center;
 }
 
@@ -29,4 +27,21 @@
   padding: 10px;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+
+#rps-flexbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#rps-flexbox img {
+  width: 20%;
+  height: 250px;
+  margin: 10px 0px;
+  border: 2px solid black;
+}
+
+#rps-flexbox img:hover {
+  box-shadow: 10px 10px 5px blue;
 }
