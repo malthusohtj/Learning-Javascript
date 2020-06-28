@@ -1,20 +1,32 @@
-.container-1 {
+.container-1,
+.container-2 {
   border: 1px solid black;
   margin: 0% 10%;
 }
 
-.container-1 h2 {
+.container-1 h2,
+.container-2 h2 {
   text-align: center;
 }
 
-.container-flexbox-1 {
+.button-flexbox-1,
+.button-flexbox-2 {
   border: 1px solid black;
   display: flex;
   padding: 10px;
   justify-content: space-around;
 }
 
-.container-flexbox-1 div {
+.result-container {
   padding: 10px;
   border: 1px solid black;
+  justify-content: center;
+}
+
+.container-flexbox-2 {
+  border: 1px solid black;
+  display: flex;
+  padding: 10px;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
