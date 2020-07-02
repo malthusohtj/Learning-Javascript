@@ -93,8 +93,10 @@ const frontEndChanges = (userChoice, botChoice, resultMessage) => {
   botChoiceImg.setAttribute("border", "2px solid black");
 
   let resultMessageSpan = document.createElement("div");
-  resultMessageSpan.innerHTML = resultMessage;
+  let resultMessageH2 = document.createElement("h2");
+  resultMessageH2.innerHTML = resultMessage;
   resultMessageSpan.style.border = "2px solid black";
+  resultMessageSpan.appendChild(resultMessageH2);
 
   document.getElementById("rps-flexbox").appendChild(userChoiceImg);
   document.getElementById("rps-flexbox").appendChild(resultMessageSpan);
@@ -108,3 +110,65 @@ const rpsGame = (userClick) => {
   let resultMessage = winnerComputer(userChoice, botChoice);
   frontEndChanges(userChoice, botChoice, resultMessage);
 };
+
+//Challenge 4: Change Button Colours
+document.getElementById("background").addEventListener("change", function () {
+  changeButtonColour(this.value);
+});
+let allButtons = document.getElementsByTagName("button");
+
+let allButtonsCopy = [];
+
+for (let i = 0; i < allButtons.length; i++) {
+  allButtonsCopy.push(allButtons[i].classList[1]);
+}
+
+function changeButtonColour(inputOption) {
+  if (inputOption === "red") {
+    buttonRed();
+  } else if (inputOption === "green") {
+    buttonGreen();
+  } else if (inputOption === "reset") {
+    buttonReset();
+  } else if (inputOption === "random") {
+    buttonRandom();
+  }
+}
+
+function buttonRed() {
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].classList.remove(allButtons[i].classList[1]);
+    allButtons[i].classList.add("btn-danger");
+  }
+}
+
+function buttonGreen() {
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].classList.remove(allButtons[i].classList[1]);
+    allButtons[i].classList.add("btn-success");
+  }
+}
+
+function buttonReset() {
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].classList.remove(allButtons[i].classList[1]);
+    allButtons[i].classList.add(allButtonsCopy[i]);
+  }
+}
+
+function buttonRandom() {
+  let randomButtonClasses = [
+    "btn-danger",
+    "btn-success",
+    "btn-primary",
+    "btn-warning",
+  ];
+  for (let i = 0; i < allButtons.length; i++) {
+    allButtons[i].classList.remove(allButtons[i].classList[1]);
+    allButtons[i].classList.add(
+      randomButtonClasses[
+        Math.floor(Math.random() * randomButtonClasses.length)
+      ]
+    );
+  }
+}

@@ -29,10 +29,13 @@
   justify-content: space-around;
 }
 
-#rps-flexbox {
+#rps-flexbox,
+#button-flexbox {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+  border: 1px solid black;
 }
 
 #rps-flexbox img {
